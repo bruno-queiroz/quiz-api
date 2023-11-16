@@ -30,7 +30,7 @@ public class QuizController {
     }
 
     @PostMapping("/answer/{quizId}")
-    ResponseEntity answerQuiz(@PathVariable UUID quizId, @RequestBody AnswerQuizInputDto answer){
+    ResponseEntity<Object> answerQuiz(@PathVariable UUID quizId, @RequestBody AnswerQuizInputDto answer){
         AnswerPayload data = quizServices.answerQuiz(answer, quizId);
         if(data.getData() == null){
             return ResponseHandler.generateResponse(null, HttpStatus.NOT_FOUND, "Question not found.", false);
