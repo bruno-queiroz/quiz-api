@@ -44,7 +44,7 @@ public class QuizController {
         }
 
         if(data.getIsCorrect() == false){
-            return ResponseHandler.generateResponse(data.getData(), HttpStatus.CREATED, "Wrong answer!", true);
+            return ResponseHandler.generateResponse(data, HttpStatus.CREATED, "Wrong answer!", true);
 
         }
         return ResponseHandler.generateResponse(data, HttpStatus.CREATED, "Right answer!", true);
