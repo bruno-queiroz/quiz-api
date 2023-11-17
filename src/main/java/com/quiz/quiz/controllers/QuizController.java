@@ -28,7 +28,7 @@ public class QuizController {
 
     @GetMapping
     ResponseEntity<Object> getQuizzes(){
-        return ResponseHandler.generateResponse(quizServices.getAllQuizzes(), HttpStatus.OK, "All quiz questions was fetched.", true);
+        return ResponseHandler.generateResponse(quizServices.getQuizzes(), HttpStatus.OK, "All quiz questions was fetched.", true);
     }
 
     @PostMapping
