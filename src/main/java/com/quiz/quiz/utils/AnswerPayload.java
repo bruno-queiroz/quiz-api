@@ -1,16 +1,16 @@
 package com.quiz.quiz.utils;
 
 public class AnswerPayload {
-    private Object data;
+    private Object quiz;
     private Boolean isCorrect;
 
-    public AnswerPayload(Object data, Boolean isCorrect){
-        this.data = data;
+    public AnswerPayload(Object quiz, Boolean isCorrect){
+        this.quiz = quiz;
         this.isCorrect = isCorrect;
     }
 
     public Object getData(){
-        return this.data;
+        return this.quiz;
     }
 
     public Boolean getIsCorrect(){
