@@ -1,6 +1,5 @@
 package com.quiz.quiz.controllers;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
