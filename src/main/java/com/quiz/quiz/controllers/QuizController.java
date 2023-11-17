@@ -1,10 +1,12 @@
 package com.quiz.quiz.controllers;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +25,11 @@ public class QuizController {
     
     @Autowired
     private QuizServices quizServices;
+
+    @GetMapping
+    ResponseEntity<Object> getQuizzes(){
+        return ResponseHandler.generateResponse(quizServices.getAllQuizzes(), HttpStatus.OK, "All quiz questions was fetched.", true);
+    }
 
     @PostMapping
     Quiz createQuiz(@RequestBody Quiz quiz){
