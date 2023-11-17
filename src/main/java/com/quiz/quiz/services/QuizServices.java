@@ -1,6 +1,7 @@
 package com.quiz.quiz.services;
 
 import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ import com.quiz.quiz.utils.AnswerPayload;
 public class QuizServices {
     @Autowired
     private QuizRepository quizRepository;
+
+    public List<Quiz> getQuizzes(){
+        return quizRepository.findAll();
+    }
 
     public Quiz createQuiz(Quiz quiz){
         return quizRepository.save(quiz);
