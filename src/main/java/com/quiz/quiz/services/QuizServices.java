@@ -40,4 +40,8 @@ public class QuizServices {
 
         return new AnswerPayload(null, false); 
     }
+
+    public void deleteQuiz(UUID quizId){
+        quizRepository.deleteById(quizId);
+    }
 }
