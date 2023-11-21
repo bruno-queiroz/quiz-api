@@ -44,4 +44,25 @@ public class QuizServices {
     public void deleteQuiz(UUID quizId){
         quizRepository.deleteById(quizId);
     }
+
+    public Optional<Quiz> updateQuiz(UUID quizId, Quiz quiz){
+        Optional<Quiz> optionalQuiz = quizRepository.findById(quizId);
+
+        if(optionalQuiz.isPresent()){
+            Quiz quizToUpdate = optionalQuiz.get();
+
+            quizToUpdate.setQuestion(quiz.getQuestion());
+            quizToUpdate.setAnswer(quiz.getAnswer());
+            quizToUpdate.setA(quiz.getA());
+            quizToUpdate.setB(quiz.getB());
+            quizToUpdate.setC(quiz.getC());
+            quizToUpdate.setD(quiz.getD());
+
+            quizRepository.save(quizToUpdate);
+            return Optional.of(quizToUpdate);
+        } else{
+            return Optional.empty();
+        }
+    }
+
 }
