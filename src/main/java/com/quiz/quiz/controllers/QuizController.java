@@ -1,5 +1,6 @@
 package com.quiz.quiz.controllers;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,4 +57,15 @@ public class QuizController {
         quizServices.deleteQuiz(quizId);
         return ResponseHandler.generateResponse(quizId, HttpStatus.OK, "Quiz deleted.", true);
     }
+
+    @PutMapping("/{quizId}")
+        ResponseEntity<Object> updateQuiz(@PathVariable UUID quizId, @RequestBody Quiz quiz){
+            Optional<Quiz> optionalQuiz = quizServices.updateQuiz(quizId, quiz);
+            if(optionalQuiz.isPresent()){
+                return ResponseHandler.generateResponse(optionalQuiz.get(), HttpStatus.OK, "Quiz edited!", true);
+            }
+
+            return ResponseHandler.generateResponse(null, HttpStatus.BAD_REQUEST, "Quiz not found.", false);
+        }
+
 }
