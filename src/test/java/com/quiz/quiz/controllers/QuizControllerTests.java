@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -18,7 +19,7 @@ public class QuizControllerTests {
     public void testGetQuiz() throws Exception{
         mvc
         .perform(MockMvcRequestBuilders.get("/quiz"))
-        .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+        .andDo(print()).andExpect(MockMvcResultMatchers.status().isOk());
         
     }
 }
